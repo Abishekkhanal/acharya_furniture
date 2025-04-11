@@ -1,0 +1,57 @@
+<!-- categories.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Categories - Acharya Furniture</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f8f8f8; }
+    header {
+      background: url('assets/images/navbar.png') no-repeat center center/cover;
+      color: #fff;
+      padding: 2em 1em;
+      text-align: center;
+    }
+    nav {
+      margin-top: 1em;
+    }
+    nav a {
+      color: #fff;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .categories { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; padding: 2rem; }
+    .category { background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.1); text-align: center; transition: transform 0.3s; }
+    .category:hover { transform: scale(1.02); }
+    .category img { width: 100%; height: 200px; object-fit: cover; }
+    .category h2 { padding: 1rem; font-size: 1.2rem; color: #333; }
+  </style>
+</head>
+<body>
+  <header><h1>Furniture Categories</h1></header>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="categories.html">Categories</a>
+    <a href="cart.html">Cart</a>
+    <a href="order.html">Order</a>
+  </nav>
+  <section class="categories">
+    <div class="category">
+      <a href="product.html"><img src="https://images.pexels.com/photos/271618/pexels-photo-271618.jpeg" alt="3 seater sofa"><h2>3 seater sofa</h2></a>
+    </div>
+    <div class="category">
+      <a href="product2.html"><img src="https://images.pexels.com/photos/271743/pexels-photo-271743.jpeg" alt="4 seater sofa"><h2>4 seater sofa</h2></a>
+    </div>
+    <div class="category">
+      <a href="product.html"><img src="https://images.pexels.com/photos/380768/pexels-photo-380768.jpeg" alt="6 seater sofa"><h2>6 seater sofa</h2></a>
+    </div>
+    <div class="category">
+      <a href="product.html"><img src="https://images.pexels.com/photos/276528/pexels-photo-276528.jpeg" alt="7 seater sofa"><h2>7 seater sofa</h2></a>
+    </div>
+
+  </section>
+</body>
+</html>

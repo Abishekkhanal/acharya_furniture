@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Your Cart</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f9f9f9;
+    }
+
+    header {
+      background: url('assets/images/navbar.png') no-repeat center center/cover;
+      color: #fff;
+      padding: 2em 1em;
+      text-align: center;
+    }
+    nav {
+      margin-top: 1em;
+    }
+    nav a {
+      color: #fff;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: auto;
+      padding: 1rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 1rem;
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    th, td {
+      padding: 0.75rem;
+      text-align: left;
+      border-bottom: 1px solid #ccc;
+    }
+
+    th {
+      background-color: #007BFF;
+      color: white;
+    }
+
+    td img {
+      width: 70px;
+      height: auto;
+      border-radius: 5px;
+    }
+
+    td button {
+      background: #dc3545;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .total {
+      text-align: right;
+      font-weight: bold;
+      margin-top: 1rem;
+      font-size: 1.2rem;
+    }
+
+    .order-btn {
+      display: block;
+      width: 100%;
+      max-width: 300px;
+      margin: 2rem auto;
+      padding: 1rem;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      table, thead, tbody, th, td, tr {
+        display: block;
+      }
+
+      thead {
+        display: none;
+      }
+
+      tr {
+        margin-bottom: 1rem;
+        background: white;
+        padding: 1rem;
+        border-radius: 10px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      }
+
+      td {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.5rem 0;
+        border: none;
+      }
+
+      td::before {
+        content: attr(data-label);
+        font-weight: bold;
+        width: 45%;
+      }
+
+      td img {
+        width: 60px;
+        height: auto;
+        margin-left: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Acharya Furniture</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="categories.html">Categories</a>
+      <a href="cart.html">Cart</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+  <center><h2>Your Cart</h2></center>
+  <div class="container">
+    <table id="cartTable">
+      <thead>
+        <tr>
+          <th>Image</th>
+          <th>Product</th>
+          <th>Quantity</th>
+          <th>Price</th>
+          <th>Total</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <div class="total" id="grandTotal">Grand Total: ₹0</div>
+    <button class="order-btn">Place Order</button>
+  </div>
+
+  <script>
+    function displayCart() {
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+      const tbody = document.querySelector("#cartTable tbody");
+      let total = 0;
+      tbody.innerHTML = "";
+
+      if (cart.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;">Your cart is empty</td></tr>';
+        document.getElementById("grandTotal").textContent = "Grand Total: ₹0";
+        return;
+      }
+
+      cart.forEach((item, index) => {
+        const itemTotal = item.quantity * item.price;
+        total += itemTotal;
+
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td data-label="Image"><img src="${item.image}" alt="${item.name}"></td>
+          <td data-label="Product">${item.name}</td>
+          <td data-label="Quantity">${item.quantity}</td>
+          <td data-label="Price">₹${item.price}</td>
+          <td data-label="Total">₹${itemTotal}</td>
+          <td data-label="Actions"><button onclick="removeItem(${index})">Remove</button></td>
+        `;
+        tbody.appendChild(tr);
+      });
+
+      document.getElementById("grandTotal").textContent = `Grand Total: ₹${total}`;
+    }
+
+    function removeItem(index) {
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+      cart.splice(index, 1);
+      localStorage.setItem("cart", JSON.stringify(cart));
+      displayCart();
+    }
+
+    displayCart();
+  </script>
+</body>
+</html>

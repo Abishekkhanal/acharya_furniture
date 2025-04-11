@@ -1,0 +1,68 @@
+<!-- categories.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Categories - Acharya Furniture</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f8f8f8; }
+    
+    header {
+      background: url('assets/images/navbar.png') no-repeat center center/cover;
+      color: #fff;
+      padding: 2em 1em;
+      text-align: center;
+    }
+    nav {
+      margin-top: 1em;
+    }
+    h2 {
+      color: #007BFF;
+    }
+    nav a {
+      color: #fff;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .categories { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; padding: 2rem; }
+    .category { background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.1); text-align: center; transition: transform 0.3s; }
+    .category:hover { transform: scale(1.02); }
+    .category img { width: 100%; height: 200px; object-fit: cover; }
+    .category h2 { padding: 1rem; font-size: 1.2rem; color: #333; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Acharya Furniture</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="categories.html">Categories</a>
+      <a href="cart.html">Cart</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+  <section class="categories">
+    <div class="category">
+      <a href="almirah.html"><img src="https://images.pexels.com/photos/271618/pexels-photo-271618.jpeg" alt="Dining"><h2>Almirah</h2></a>
+    </div>
+    <div class="category">
+      <a href="bed.html"><img src="https://images.pexels.com/photos/271743/pexels-photo-271743.jpeg" alt="Bedroom"><h2>Bedroom</h2></a>
+    </div>
+    <div class="category">
+      <a href="hotel.html"><img src="https://images.pexels.com/photos/380768/pexels-photo-380768.jpeg" alt="Office"><h2>Hotel</h2></a>
+    </div>
+    <div class="category">
+      <a href="table_cate.html"><img src="https://images.pexels.com/photos/276528/pexels-photo-276528.jpeg" alt="Outdoor"><h2>Tables</h2></a>
+    </div>
+    <div class="category">
+      <a href="sofa_cate.html"><img src="https://images.pexels.com/photos/271618/pexels-photo-271618.jpeg" alt="Dining"><h2>Sofa Sets</h2></a>
+    </div>
+    <div class="category">
+      <a href="chair_cate.html"><img src="https://images.pexels.com/photos/271618/pexels-photo-271618.jpeg" alt="Chairs"><h2>Chairs</h2></a>
+    </div>
+  </section>
+</body>
+</html>
